@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Unreleased
 #### Changed
 
+## [0.1.2](https://github.com/KyleGoslan/KGLocationManager/releases/tag/0.1.2)
+Released on 2016-22-09.
+
+#### Changed
+- Minor changes.
+- Added by [Kyle Goslan](https://github.com/KyleGoslan).
+
 ## [0.1.1](https://github.com/KyleGoslan/KGLocationManager/releases/tag/0.1.1)
 Released on 2016-22-09.
 

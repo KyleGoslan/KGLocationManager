@@ -27,7 +27,6 @@
 		274EFC9F1D93EFCE00EACE1E /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		274EFCA01D93EFCE00EACE1E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		274EFCA11D93EFCE00EACE1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		274EFCA31D93F08C00EACE1E /* KGLocationManger.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = KGLocationManger.podspec; sourceTree = "<group>"; };
 		2771926F1D928BEC00ADA166 /* KGLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KGLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		277192721D928BEC00ADA166 /* KGLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KGLocationManager.h; sourceTree = "<group>"; };
 		277192731D928BEC00ADA166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,7 +61,6 @@
 				274EFC9F1D93EFCE00EACE1E /* CHANGELOG.md */,
 				274EFCA01D93EFCE00EACE1E /* LICENSE */,
 				274EFCA11D93EFCE00EACE1E /* README.md */,
-				274EFCA31D93F08C00EACE1E /* KGLocationManger.podspec */,
 			);
 			name = Pod;
 			sourceTree = "<group>";

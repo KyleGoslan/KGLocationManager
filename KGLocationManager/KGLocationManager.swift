@@ -9,18 +9,19 @@
 import Foundation
 import CoreLocation
 
-protocol KGLocationUpdateProtocol {
-  func didUpdate(location : CLLocation)
+public protocol KGLocationUpdateDelegte {
+  func didUpdate(location: CLLocation)
+  func gotFirst(location: CLLocation)
 }
 
-class KGLocationManager: NSObject, CLLocationManagerDelegate {
+public class KGLocationManager: NSObject, CLLocationManagerDelegate {
   
-  static let sharedManager = KGLocationManager()
+  public static let sharedManager = KGLocationManager()
   private var locationManager = CLLocationManager()
   
-  var currentLocation: CLLocation?
-  var delegate: KGLocationUpdateProtocol?
-  var firstUpdate = true
+  public var currentLocation: CLLocation?
+  public var delegate: KGLocationUpdateDelegte?
+  public var firstUpdate = true
   
   private override init () {
     super.init()
@@ -29,13 +30,17 @@ class KGLocationManager: NSObject, CLLocationManagerDelegate {
     locationManager.startUpdatingLocation()
   }
   
-  private func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+  public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    guard let newLocation = locations.last else { return }
     currentLocation = newLocation
     delegate?.didUpdate(location: newLocation)
     if firstUpdate {
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FirstLocationUpdate"), object: self)
+      delegate?.gotFirst(location: newLocation)
       firstUpdate = !firstUpdate
     }
+
   }
+
   
 }

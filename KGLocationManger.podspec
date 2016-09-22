@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KGLocationManager"
-  s.version          = "0.1.7"
+  s.version          = "0.1.0"
   s.summary          = "Singleton location manager class."
   s.description      = "Easy to use one location manager across multiple view controllers."
 

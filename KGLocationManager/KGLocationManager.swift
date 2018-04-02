@@ -14,33 +14,42 @@ public protocol KGLocationUpdateDelegte {
   func gotFirst(location: CLLocation)
 }
 
-public class KGLocationManager: NSObject, CLLocationManagerDelegate {
+open class KGLocationManager: NSObject {
   
-  public static let sharedManager = KGLocationManager()
+  public static let shared = KGLocationManager()
   private var locationManager = CLLocationManager()
   
   public var currentLocation: CLLocation?
   public var delegate: KGLocationUpdateDelegte?
-  public var firstUpdate = true
+  public var isFirstUpdate = true
+  
+  public func configure(startUpdatingLocation: Bool = true) {
+    if startUpdatingLocation { locationManager.startUpdatingLocation() }
+  }
   
   private override init () {
     super.init()
     locationManager.delegate = self
     locationManager.requestAlwaysAuthorization()
-    locationManager.startUpdatingLocation()
   }
+  
+}
+
+
+extension KGLocationManager: CLLocationManagerDelegate {
   
   public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let newLocation = locations.last else { return }
     currentLocation = newLocation
     delegate?.didUpdate(location: newLocation)
-    if firstUpdate {
-      NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FirstLocationUpdate"), object: self)
+    Notification.Name.DidUpdateLocation.post(object: self, userInfo: nil)
+    if isFirstUpdate {
+      Notification.Name.FirstLocationUpdate.post(object: self, userInfo: nil)
       delegate?.gotFirst(location: newLocation)
-      firstUpdate = !firstUpdate
+      isFirstUpdate = !isFirstUpdate
     }
-
+    
   }
-
   
 }
+
